@@ -468,8 +468,18 @@ def _load_game_frame(session):
             }
         )
 
-    return rows
+    return _enforce_low_attendance_no_promo(rows, min_games=3)
 
+
+def _enforce_low_attendance_no_promo(rows, min_games=3):
+    if not rows or min_games <= 0:
+        return rows
+
+    sorted_rows = sorted(rows, key=lambda r: (r["attendance"], r["game_date"], r["id"]))
+    for row in sorted_rows[: min(min_games, len(sorted_rows))]:
+        row["promotion_name"] = "None"
+
+    return rows
 
 def _compute_promotion_effects(rows):
     promo_names = sorted(set(r["promotion_name"] for r in rows if r["promotion_name"] != "None"))

@@ -140,28 +140,38 @@ body {
   border: 1px solid #d8e4f0;
 }
 
-.error-panel {
+.status-panel {
   margin-top: 12px;
   border-radius: 12px;
-  border: 1px solid #fecaca;
-  background: var(--danger-bg);
-  color: #7f1d1d;
+  border: 1px solid var(--line);
   padding: 12px;
 }
 
-.error-panel strong {
+.status-panel strong {
   display: block;
   margin-bottom: 6px;
 }
 
-.error-panel ul {
+.status-panel ul {
   margin: 0 0 8px 18px;
   padding: 0;
 }
 
-.error-panel p {
+.status-panel p {
   margin: 0;
   font-size: 13px;
+}
+
+.error-panel {
+  border-color: #fecaca;
+  background: var(--danger-bg);
+  color: #7f1d1d;
+}
+
+.ok-panel {
+  border-color: #bbf7d0;
+  background: #ecfdf5;
+  color: #065f46;
 }
 
 .hero-card h3 {

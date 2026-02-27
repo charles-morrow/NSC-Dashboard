@@ -28,19 +28,28 @@ function HeroHeader({
             <span className="soft-pill">Attendance + synthetic commercial data</span>
             <span className="soft-pill">Uncertainty-aware inference</span>
           </div>
-          {!!loadErrors.length && (
-            <div className="error-panel" role="alert">
-              <strong>Data load issue detected</strong>
-              <ul>
-                {loadErrors.map((err, idx) => (
-                  <li key={`err-${idx}`}>{err}</li>
-                ))}
-              </ul>
-              <p>
-                Start Flask first, then React. In development, the frontend uses the CRA proxy or `REACT_APP_API_BASE` if set.
-              </p>
-            </div>
-          )}
+          <div className={`status-panel ${loadErrors.length ? 'error-panel' : 'ok-panel'}`} role={loadErrors.length ? 'alert' : 'status'}>
+            {loadErrors.length ? (
+              <>
+                <strong>Data load issue detected</strong>
+                <ul>
+                  {loadErrors.map((err, idx) => (
+                    <li key={`err-${idx}`}>{err}</li>
+                  ))}
+                </ul>
+                <p>
+                  Start Flask first, then React. In development, the frontend uses the CRA proxy or `REACT_APP_API_BASE` if set.
+                </p>
+              </>
+            ) : (
+              <>
+                <strong>Data pipeline healthy</strong>
+                <p>
+                  API responses loaded successfully. You can use this area for quick context while exploring the dashboard story tabs.
+                </p>
+              </>
+            )}
+          </div>
         </div>
         <div className="hero-side">
           <div className="hero-card">
