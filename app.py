@@ -211,7 +211,7 @@ def _analysis_caveats():
 
 def _project_context():
     return {
-        "title": "Nashville SC Fan Economics and Operations Analytics",
+        "title": "Nashville SC Fan Economics and Operations Analytics for 2025 Home Games",
         "portfolio_intent": "Created by Charles Morrow to demonstrate end-to-end data science and product thinking.",
         "business_questions": [
             "How variable is home attendance across the season?",
